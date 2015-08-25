@@ -1,7 +1,6 @@
-require_relative 'customer'
-require 'twilio-ruby'
 
-class Twilio
+
+module Twilio
   def send_text_message
     # Get your Account Sid and Auth Token from twilio.com/user/account
   account_sid = 'ACd20534bbb6a0aec9f76e2975230e0db6'
