@@ -8,7 +8,7 @@ describe Order do
   describe '#menu' do
     it{is_expected.to respond_to(:menu)}
     it 'shows a list of dishes with prices' do
-      expect(subject.menu).to include ({:pizza=>12})
+      expect(subject.menu).to include ({'pizza'=>12})
     end
   end
 
@@ -26,7 +26,7 @@ describe Order do
     it 'shows the dish ordered and price based on quantity ordered' do
       subject.select_dish('pizza', 2)
       subject.select_dish('fries', 3)
-      expect(subject.breakdown).to include ({:pizza=>24})
+      expect(subject.breakdown).to include (['pizza', 24])
     end
   end
 end

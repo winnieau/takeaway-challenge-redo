@@ -7,7 +7,7 @@ describe 'Features' do
   describe '#menu' do
     it{expect(order).to respond_to(:menu)}
     it 'displays the menu' do
-      expect(order.menu).to include ({:pizza=>12})
+      expect(order.menu).to include ({'pizza'=>12})
     end
   end
   describe '#select_dish' do
@@ -24,7 +24,7 @@ describe 'Features' do
     it 'shows the dish ordered and price based on quantity ordered' do
       order.select_dish('pizza', 2)
       order.select_dish('fries', 3)
-      expect(order.breakdown).to include ({:pizza=>24})
+      expect(order.breakdown).to include (['pizza', 24])
     end
   end
 end
