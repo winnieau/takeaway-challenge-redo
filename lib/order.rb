@@ -6,7 +6,7 @@ require 'twilio-ruby'
 
 class Order
   include Menu
-  include Twilio
+  
 
   def initialize
     @dishes = { 'pizza'=> 12, 'fries'=> 3, 'soup'=> 4 }
@@ -25,6 +25,7 @@ class Order
   def breakdown
     @total_price = []
     @price_totals = []
+
     @hashed_selections.inject(0) do |result, (key, value)|
       val = dishes.fetch(key)
       total_value = val * value
@@ -41,10 +42,10 @@ class Order
     @price_totals.inject(:+)
   end
 
-  def place_order customer
+  def place_order (customer, sms_client)
     fail 'No dishes selected' if selections.empty?
     @time_order = Time.now + 3600
-    send_text_message
+    sms_client.send_text_message(customer)
     customer.affirmative
   end
 

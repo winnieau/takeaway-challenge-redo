@@ -38,15 +38,17 @@ describe Order do
     end
   end
   let(:customer) {double :customer}
+  let(:sms_client) {double :sms_client, send_text_message: nil}
     describe '#place_order' do
     it 'raises an error if no dishes selected' do
-      expect{subject.place_order(customer)}.to raise_error 'No dishes selected'
+      expect{subject.place_order(customer, sms_client)}.to raise_error 'No dishes selected'
     end
     it 'allows customer to place order and sends a text message' do
       allow(customer).to receive(:affirmative) {true}
       allow(customer).to receive(:placed?) {true}
+      allow(customer).to receive(:text_received) {true}
       subject.select_dish('fries', 3)
-      subject.place_order(customer)
+      subject.place_order(customer, sms_client)
       expect(customer.placed?).to be true
     end
   end

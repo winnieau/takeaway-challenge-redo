@@ -38,12 +38,13 @@ describe 'Features' do
     end
   end
   describe '#place_order' do
+    let(:sms_client) {double :sms_client, send_text_message: nil}
     it 'raises an error if no dishes selected' do
-      expect{order.place_order(customer)}.to raise_error 'No dishes selected'
+      expect{order.place_order(customer, sms_client)}.to raise_error 'No dishes selected'
     end
     it 'allows customer to place order and sends a text message' do
       order.select_dish('pizza', 2)
-      order.place_order(customer)
+      order.place_order(customer, sms_client)
       expect(customer.placed?).to be true
     end
   end
