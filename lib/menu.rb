@@ -1,6 +1,9 @@
 module Menu
-  
-  def display
-    "Burger"
+
+
+  def menu
+    @dishes.each do |dish, price|
+      puts "#{dish}, $#{price}"
+    end
   end
 end
