@@ -27,4 +27,12 @@ describe 'Features' do
       expect(order.breakdown).to include (['pizza', 24])
     end
   end
+  describe '#total_price' do
+    it 'shows the total price for the order' do
+      order.select_dish('pizza', 2)
+      order.select_dish('fries', 3)
+      order.breakdown
+      expect(order.total_price).to eq (33)
+    end
+  end
 end
