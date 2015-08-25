@@ -1,9 +1,11 @@
 require 'order'
 require 'menu'
+require 'customer'
 
 describe 'Features' do
 
   let(:order) {Order.new}
+  let(:customer) {Customer.new}
   describe '#menu' do
     it{expect(order).to respond_to(:menu)}
     it 'displays the menu' do
@@ -33,6 +35,16 @@ describe 'Features' do
       order.select_dish('fries', 3)
       order.breakdown
       expect(order.total_price).to eq (33)
+    end
+  end
+  describe '#place_order' do
+    it 'raises an error if no dishes selected' do
+      expect{order.place_order(customer)}.to raise_error 'No dishes selected'
+    end
+    it 'allows customer to place order and sends a text message' do
+      order.select_dish('pizza', 2)
+      order.place_order(customer)
+      expect(customer.placed?).to be true
     end
   end
 end

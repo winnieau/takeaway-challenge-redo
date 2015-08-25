@@ -1,6 +1,6 @@
 require 'order'
 require 'menu'
-
+require 'customer'
 
 describe Order do
 
@@ -35,6 +35,19 @@ describe Order do
       subject.select_dish('fries', 3)
       subject.breakdown
       expect(subject.total_price).to eq (33)
+    end
+  end
+  let(:customer) {double :customer}
+    describe '#place_order' do
+    it 'raises an error if no dishes selected' do
+      expect{subject.place_order(customer)}.to raise_error 'No dishes selected'
+    end
+    it 'allows customer to place order and sends a text message' do
+      allow(customer).to receive(:affirmative) {true}
+      allow(customer).to receive(:placed?) {true}
+      subject.select_dish('fries', 3)
+      subject.place_order(customer)
+      expect(customer.placed?).to be true
     end
   end
 end

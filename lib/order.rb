@@ -1,5 +1,7 @@
 require_relative 'menu'
 require_relative 'customer'
+require 'twilio-ruby'
+
 
 class Order
   include Menu
@@ -36,4 +38,24 @@ class Order
   def total_price
     @price_totals.inject(:+)
   end
+
+  def place_order customer
+    fail 'No dishes selected' if selections.empty?
+    @time_order = Time.now + 3600
+    send_text_message
+    customer.affirmative
+  end
+
+  def send_text_message
+    # Get your Account Sid and Auth Token from twilio.com/user/account
+  account_sid = 'ACd20534bbb6a0aec9f76e2975230e0db6'
+  auth_token = '10de356b4197cb57e2fa960929edc1e7'
+  @client = Twilio::REST::Client.new account_sid, auth_token
+
+  message = @client.account.messages.create(:body => "Thank you! Your order was placed and will be delivered before #{@time_order}",
+      :to => "+14438470764",     # Replace with your phone number
+      :from => "+14437013745")   # Replace with your Twilio number
+  puts message.sid
+  end
+
 end
