@@ -22,4 +22,11 @@ describe Order do
       expect{subject.select_dish('trash', 3)}.to raise_error 'Selection not valid'
     end
   end
+  describe '#breakdown' do
+    it 'shows the dish ordered and price based on quantity ordered' do
+      subject.select_dish('pizza', 2)
+      subject.select_dish('fries', 3)
+      expect(subject.breakdown).to include ({:pizza=>24})
+    end
+  end
 end

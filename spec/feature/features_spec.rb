@@ -1,8 +1,6 @@
 require 'order'
 require 'menu'
 
-
-
 describe 'Features' do
 
   let(:order) {Order.new}
@@ -20,6 +18,13 @@ describe 'Features' do
     end
     it 'raises an error when selection is not valid' do
       expect{order.select_dish('trash', 3)}.to raise_error 'Selection not valid'
+    end
+  end
+  describe '#breakdown' do
+    it 'shows the dish ordered and price based on quantity ordered' do
+      order.select_dish('pizza', 2)
+      order.select_dish('fries', 3)
+      expect(order.breakdown).to include ({:pizza=>24})
     end
   end
 end
