@@ -1,8 +1,8 @@
 Takeaway Challenge
 ==================
  
- User Stories
- ---
+**User Stories**
+---
 
 ```
 As a customer
