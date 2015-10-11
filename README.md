@@ -22,4 +22,11 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
+Technologies Used
+---
+
+- Rspec
+- Capybara
+- Twilio
+
 *Note: A big thank you to Parminder who contributed to a large portion of this code, but whose work does not show up in the contributions on Github. You can find his github profile [here](https://github.com/ajitsy)
