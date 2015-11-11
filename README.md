@@ -29,4 +29,4 @@ Technologies Used
 - Capybara
 - Twilio
 
-*Note: A big thank you to Parminder who contributed to a large portion of this code, but whose work does not show up in the contributions on Github. You can find his github profile [here](https://github.com/ajitsy)
+* Note: A big thank you to [Parminder](https://github.com/ajitsy) who contributed to a large portion of this code, but whose work does not show up in the contributions on Github. 
