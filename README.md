@@ -31,4 +31,4 @@ Technologies Used
 Note 
 ---
 
-A big thank you to [Parminder](https://github.com/ajitsy) who contributed to a large portion of this code, but whose work does not show up in the contributions on Github. 
+A big thank you to [Parminder](https://github.com/ajitsy) who contributed to a large portion of this code, but whose work does not show up in the contributions on GitHub. 
